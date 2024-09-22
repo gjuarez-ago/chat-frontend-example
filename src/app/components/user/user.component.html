@@ -1,0 +1,38 @@
+<!-- user.component.html -->
+<div class="register-container">
+  <h2>Register</h2>
+  <form (ngSubmit)="registerUser()" #registerForm="ngForm">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="registerUsername"
+        name="username"
+        required
+        #username="ngModel"
+      />
+      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="error">
+        <div *ngIf="username.errors?.required">Username is required.</div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="registerPassword"
+        name="password"
+        required
+        #password="ngModel"
+      />
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error">
+        <div *ngIf="password.errors?.required">Password is required.</div>
+      </div>
+    </div>
+    
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+
+</div>
